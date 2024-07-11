@@ -16,7 +16,6 @@ Route::get('/', [GreetingsController::class, 'welcome']);
 Route::get('/greet/{nama}/{npm}', [GreetingsController::class, 'greet']);
 
 #Praktikum 3
-// routes/web.php
 use App\Http\Controllers\PortfolioController;
 
 Route::get('/', [PortfolioController::class, 'home'])->name('home');
