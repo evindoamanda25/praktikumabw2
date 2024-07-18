@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -20,6 +20,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
     ];
 
     /**
@@ -36,12 +37,34 @@ class User extends Authenticatable
      * Get the attributes that should be cast.
      *
      * @return array<string, string>
-     */
-    protected function casts(): array
+    **/
+
+     public function isAdmin() 
+    { 
+        return $this->role === 'admin'; 
+    } 
+  
+     public function isOwner() 
+     { 
+        return $this->role === 'owner'; 
+    } 
+
+   
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
+
+    public function email()
+    {
+        return $this->email;
+    }
+
+    /**protected function casts(): array
     {
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
     }
+    **/
 }

@@ -105,6 +105,7 @@ return [
         ),
     ],
 
+    
     /*
     |--------------------------------------------------------------------------
     | Maintenance Mode Driver
@@ -122,5 +123,13 @@ return [
         'driver' => env('APP_MAINTENANCE_DRIVER', 'file'),
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
+      
+    'aliases' => [
+    'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
+],
+
+'providers' => [
+    SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
+],
 
 ];
